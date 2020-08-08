@@ -1,0 +1,61 @@
+{{  element }}
+<div class="card">
+    <div class="card-body">
+        <h2 class="card-title">Crear Usuario</h2>
+        <div class="card-text">
+            <form (ngSubmit)="onSubmit(form);" #form="ngForm">
+    
+                <div class="form-group">
+                    <label  for="name">Nombre</label>
+                    <input id="name" #name="ngModel" name="name" type="text" class="form-control" required [(ngModel)]="user.name" >
+                </div>
+                
+                <div [hidden]="name.valid || name.pristine" class="alert alert-danger">
+                    El nombre es un campo requerido.
+                </div>
+
+                <div class="form-group">
+                    <label for="email">Correo</label>
+                    <input  id="email" #email="ngModel" name="email" type="email" class="form-control" email required  [(ngModel)]="user.email">
+                </div>
+
+                <div [hidden]="email.valid || email.pristine" class="alert alert-danger">
+                    El nombre es un campo requerido.
+                </div>
+
+                <div class="form-group">
+                    <label for="gender">Género</label>
+                    <select #gender="ngModel" name="gender"  class="form-control" id="gender" [(ngModel)]="user.gender">
+                        <option *ngFor="let gender of genders" [value]="gender">{{gender}}</option>
+                    </select>
+                </div>
+                <button type="submit" class="btn btn-block btn-success" [disabled]="!form.form.valid">Agregar</button>
+            </form>
+        </div>
+    </div>
+</div>
+<br>
+<br>
+<div class="card">
+    <div class="card-body">
+        <h2 class="card-title">Usuarios</h2>
+        <div class="card-text">
+            <div class="table-responsive">
+                <table class="table table-hover">
+                    <thead>
+                        <th>Nombre</th>
+                        <th>Correo</th>
+                        <th>Género</th>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let user of users">
+                            <td>{{ user.name }}</td>
+                            <td>{{ user.email }}</td>
+                            <td>{{ user.gender }}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
