@@ -2,3 +2,11 @@
 body{
     background-color: dodgerblue;
 }
+
+.ng-valid[required]{
+    border: 1px solid green;
+}
+
+.ng-invalid:not(form){
+    border: 1px solid red;
+}
